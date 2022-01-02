@@ -8,13 +8,14 @@ namespace Inculcate\Foundation;
 
 use Inculcate\Routing\Response;
 use Inculcate\Foundation\Env;
+use Inculcate\Console\Console;
 
 /**
  * Class Services.
  */
 class Services extends Response
 {   
-	use Env;
+	use Env,Console;
     /**
     * Start all the services off the application
     * @param null
@@ -56,6 +57,17 @@ class Services extends Response
         
         $this->makeResponse();
     
+	}
+
+	/**
+	* @param null
+	* @method startConsoleEngine
+	* @method Inculcate\Foundation\Services\startConsoleEngine
+	*/
+	public function startConsoleEngine(){
+
+		$this->invokeConsoleEngine();
+		
 	}
 	
 } 

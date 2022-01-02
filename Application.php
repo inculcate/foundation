@@ -15,12 +15,6 @@ use Inculcate\Foundation\Services;
 class Application extends Services
 {   
     /**
-     * The OutGood framework version.
-     *
-     * @var string
-     */
-    const VERSION = '1.0.0';
-    /**
      * To set base path of the application 
      * @var string
      */
@@ -37,9 +31,9 @@ class Application extends Services
      * @method __construct
      * @return \Inculcate\Foundation\Application\__construct
      */
-    public function __construct( $path=null ){
+    public function __construct( $appRootPath=null ){
    	  
-         $this->appRootPath = $path.$this->baseName();
+         $this->appRootPath = $appRootPath;//.$this->baseName();
          $_SERVER['APP_ROOT_PATH']= $this->appRootPath;
 
     }
@@ -59,13 +53,13 @@ class Application extends Services
     }
     /**
      * It sets the base path of the application
-     * @param string | null, $path
+     * @param string | null, $appRootPath
      * @method setAppBasePath
      * @return \Inculcate\Foundation\Application\setAppBasePath
      */
-    public function setAppBasePath($path=null){
+    public function setAppBasePath($appRootPath=null){
 
-        $this->appRootPath = $path;
+        $this->appRootPath = $appRootPath;
         $_SERVER['APP_ROOT_PATH']= $this->appRootPath;
 
     }
@@ -89,7 +83,18 @@ class Application extends Services
     * @return \Inculcate\Foundation\Application\run
     */
     public function run(){
-       $this->startEngine();
+      $this->startEngine();
+       //$this->startConsoleEngine();
+    }
+
+    /**
+    * strting the engine
+    * @param null
+    * @method console
+    * @return \Inculcate\Foundation\Application\console
+    */
+    public function console(){
+        $this->startConsoleEngine();
     }
 
 } 

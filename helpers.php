@@ -1,6 +1,6 @@
 <?php
-use Inculcate\Routing\Request;
-use Inculcate\Routing\Foundation;
+
+use Inculcate\Foundation\Softflies;
 
 // To get the base path of the application
 // if passed the any param that has to be added/combined 
@@ -9,7 +9,7 @@ if (! function_exists('base_path')) {
      * @param  string|null  $path
      * @return base path of the application
      */
-    function base_path($path = null)
+    function base_path( string $path = null)
     {   
         $app_root_path = $_SERVER['APP_ROOT_PATH'] ?? " ";
         if($path!==null){
@@ -30,7 +30,7 @@ if (! function_exists('config')) {
      * @param  string|null $default_value
      * @return config file key values
      */
-    function config($file_name_key = null, $default_value=null)
+    function config( string $file_name_key = null, $default_value=null)
     {     
          
          if ($file_name_key!==null) {
@@ -60,7 +60,7 @@ if (! function_exists('file_load')) {
      * @param  string|null  $file_path,
      * @return files values
      */
-    function file_load($file_path = null)
+    function file_load( string $file_path = null)
     {     
          
          $my_values = "";
@@ -83,10 +83,10 @@ if (! function_exists('file_load')) {
 if (! function_exists('env')) {
     /**
      * @param  string|null  $param_name
-     * @param  string|null  $value
+     * @param  any | $value
      * @return  param's value from the (.env) file
      */
-    function env( string $param_name = null, string $value=null)
+    function env( string $param_name = null, $value=null)
     {     
          
          if ($param_name!==null) {
@@ -94,6 +94,20 @@ if (! function_exists('env')) {
          }
 
          return $value;  
+
+    }
+}
+
+
+// To get the application
+if (! function_exists('app')) {
+    /**
+     * @param  null
+     * @return  Inculcate\Foundation\Softflies
+     */
+    function app()
+    {     
+         return new Softflies();  
 
     }
 }
